@@ -71,6 +71,20 @@ public class Program1 {
 		} else {
 			System.out.println("Tudo bem, não vou calcular o IMC.");
 		}
+		if (IMC < 18.5 || IMC >= 25) {
+		    double pesoMin = 18.5 * Math.pow(altura, 2);
+		    double pesoMax = 24.9 * Math.pow(altura, 2);
+
+		    System.out.println("Para ficar com IMC normal, seu peso ideal seria:");
+		    System.out.printf("Entre %.2f kg e %.2f kg%n", pesoMin, pesoMax);
+		    
+		    if (IMC < 18.5) {
+		        System.out.printf("Você precisa ganhar aproximadamente %.2f kg%n", (pesoMin - peso));
+		    } else if (IMC >= 25) {
+		        System.out.printf("Você precisa perder aproximadamente %.2f kg%n", (peso - pesoMax));
+		    }
+		}
+		
 		System.out.println("Vou fazer um resumo para você");
 		System.out.println("Seu nome é: " + azul + nome + reset + ".");
 		System.out.println("Você é o(a): " + azul + funcaoCasa + reset + ".");
