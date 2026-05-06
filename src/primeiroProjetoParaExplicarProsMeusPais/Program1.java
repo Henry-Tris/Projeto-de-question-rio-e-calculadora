@@ -12,6 +12,9 @@ public class Program1 {
 		
 		// Para mudar a cor do texto
 		String azul = "\u001B[34m";
+		String vermelho = "\u001B[31m";
+		String verde = "\u001B[32m";
+		String roxo = "\u001B[35m";
 		String reset = "\u001B[0m";
 
 		// Aqui começa o Questionario
@@ -25,15 +28,15 @@ public class Program1 {
 		int idade = sc.nextInt();
 		System.out.println("Qual é o seu peso? ");
 		double peso = sc.nextDouble();
-		System.out.println("Qual sua altura? (em metros) ");
+		System.out.println("Qual sua altura? " + vermelho + "(em metros) " + reset);
 		double altura = sc.nextDouble();
 		System.out.println("Você mede " + azul + altura + reset + "metros");
 		System.out.println("você tem " + azul + idade + reset + " anos e pesa " + azul + peso + reset + " Kg.");
 
-		System.out.println("Quando você começa a trabalhar(HH.mm)? ");
-		double inicioTrabalho = sc.nextInt();
-		System.out.println("Quando vc sai do trabalho(HH.mm)? ");
-		double fimTrabalho = sc.nextInt();
+		System.out.println("Quando você começa a trabalhar" + vermelho + "(HH.mm)? " + reset);
+		double inicioTrabalho = sc.nextDouble();
+		System.out.println("Quando vc sai do trabalho" + vermelho + "(HH.mm)? " + reset);
+		double fimTrabalho = sc.nextDouble();
 		double horarioTrabalho;
 		if (fimTrabalho >= inicioTrabalho) {
 			horarioTrabalho = fimTrabalho - inicioTrabalho;
@@ -45,7 +48,7 @@ public class Program1 {
 		// validar resposta do IMC
 		String resposta;
 
-		System.out.print("\nDeseja calcular seu IMC? (sim/nao): ");
+		System.out.print("\nDeseja calcular seu IMC? " + vermelho + "(sim/nao): " + reset);
 		resposta = sc.next();
 
 		while (!resposta.equalsIgnoreCase("sim") && !resposta.equalsIgnoreCase("nao")) {
@@ -75,18 +78,18 @@ public class Program1 {
 		    double pesoMin = 18.5 * Math.pow(altura, 2);
 		    double pesoMax = 24.9 * Math.pow(altura, 2);
 
-		    System.out.println("Para ficar com IMC normal, seu peso ideal seria:");
-		    System.out.printf("Entre %.2f kg e %.2f kg%n", pesoMin, pesoMax);
+		    System.out.println("\nPara ficar com IMC normal, seu peso ideal seria:");
+		    System.out.printf("Entre " + azul + "%.2f kg e %.2f kg%n" + reset, pesoMin, pesoMax);
 		    
 		    if (IMC < 18.5) {
-		        System.out.printf("Você precisa ganhar aproximadamente %.2f kg%n", (pesoMin - peso));
+		        System.out.printf("Você precisa ganhar aproximadamente " + azul + "%.2f kg%n" + reset, (pesoMin - peso));
 		    } else if (IMC >= 25) {
-		        System.out.printf("Você precisa perder aproximadamente %.2f kg%n", (peso - pesoMax));
+		        System.out.printf("Você precisa perder aproximadamente " + azul + "%.2f kg%n" + reset, (peso - pesoMax));
 		    }
 		}
 		
-		System.out.println("Vou fazer um resumo para você");
-		System.out.println("Seu nome é: " + azul + nome + reset + ".");
+		System.out.println("\nVou fazer um resumo para você");
+		System.out.println("\nSeu nome é: " + azul + nome + reset + ".");
 		System.out.println("Você é o(a): " + azul + funcaoCasa + reset + ".");
 		System.out.println("Você tem: " + azul + idade + reset + " anos. ");
 		System.out.println("Você pesa: " + azul + peso + reset + " Kgs. ");
@@ -103,7 +106,7 @@ public class Program1 {
 		// aqui inicia a calculadora
 		String respostaCalc;
 
-		System.out.print("\nDeseja usar a calculadora? (sim/nao): ");
+		System.out.print("\nDeseja usar a calculadora? "+ vermelho + "(sim/nao): " + reset);
 		respostaCalc = sc.next();
 
 		// validar a resposta
@@ -115,7 +118,8 @@ public class Program1 {
 
 		while (respostaCalc.equalsIgnoreCase("sim")) {
 
-			System.out.println("\n===== CALCULADORA =====");
+			System.out.println(vermelho + "\n===== CALCULADORA =====" + reset);
+			System.out.println("\nEscolha a Operação");
 			System.out.println("1 - Soma");
 			System.out.println("2 - Subtração");
 			System.out.println("3 - Multiplicação");
@@ -131,21 +135,21 @@ public class Program1 {
 			double n2 = sc.nextDouble();
 
 			if (opcao == 1) {
-				System.out.println("Resultado: " + (n1 + n2));
+				System.out.println("Resultado: " + roxo + (n1 + n2) + reset);
 			} else if (opcao == 2) {
-				System.out.println("Resultado: " + (n1 - n2));
+				System.out.println("Resultado: " + roxo + (n1 - n2) + reset);
 			} else if (opcao == 3) {
-				System.out.println("Resultado: " + (n1 * n2));
+				System.out.println("Resultado: " + roxo + (n1 * n2) + reset);
 			} else if (opcao == 4) {
 				if (n2 != 0) {
-					System.out.println("Resultado: " + (n1 / n2));
+					System.out.println("Resultado: " + roxo + (n1 / n2) + reset);
 				} else {
-					System.out.println("Erro: divisão por zero!");
+					System.out.println(vermelho + "Erro: divisão por zero!" + reset);
 				}
 			} else if (opcao == 5) {
-				System.out.println("Resultado: " + Math.pow(n1, n2));
+				System.out.println("Resultado: " + roxo + Math.pow(n1, n2) + reset);
 			} else {
-				System.out.println("Opção inválida!");
+				System.out.println(vermelho + "Opção inválida!" + reset);
 			}
 
 			System.out.print("\nDeseja usar a calculadora novamente? (sim/nao): ");
@@ -159,7 +163,7 @@ public class Program1 {
 			}
 		}
 
-		System.out.println("Programa encerrado.");
+		System.out.println(verde + "Programa encerrado." + reset);
 
 		sc.close();
 	}
