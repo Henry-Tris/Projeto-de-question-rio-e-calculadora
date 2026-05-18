@@ -16,7 +16,6 @@ public class Pessoa {
 	
 	public Pessoa(String nome, String funcaoCasa, int idade, double peso, double altura, double inicioTrabalho,
 			double fimTrabalho) {
-		super();
 		this.nome = nome;
 		this.funcaoCasa = funcaoCasa;
 		this.idade = idade;
@@ -83,11 +82,11 @@ public class Pessoa {
 		this.fimTrabalho = fimTrabalho;
 	}
 
-	public double horasTrabalhada(double inicioTrabalho, double fimTrabalho) {
-		if (this.fimTrabalho >= this.inicioTrabalho) {
-			return this.fimTrabalho - this.inicioTrabalho;
+	public double horasTrabalhadas() {
+		if (fimTrabalho >= inicioTrabalho) {
+			return fimTrabalho - inicioTrabalho;
 		} else {
-			return (24 - this.inicioTrabalho) + this.fimTrabalho;
+			return (24 - inicioTrabalho) + fimTrabalho;
 		}
 	}
 		
