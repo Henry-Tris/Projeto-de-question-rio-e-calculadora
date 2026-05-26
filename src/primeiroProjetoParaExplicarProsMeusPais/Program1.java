@@ -3,6 +3,8 @@ package primeiroProjetoParaExplicarProsMeusPais;
 import java.util.Locale;
 import java.util.Scanner;
 
+import entities.Pessoa;
+
 public class Program1 {
 
 	public static void main(String[] args) {
@@ -20,23 +22,14 @@ public class Program1 {
 		// ======= QUESTIONÁRIO ========
 		System.out.print("Qual é o seu nome? ");
 		String nome = sc.nextLine();
-
 		System.out.println("Qual é a sua função na casa? por exemplo: Pai, Mãe, filho(a) etc.");
 		String funcaoCasa = sc.nextLine();
-
-		System.out.println("Então seu nome é " + azul + nome + reset + " e você é o(a) " + azul + funcaoCasa + reset);
-
 		System.out.println("qual é a sua idade? ");
 		int idade = sc.nextInt();
-
 		System.out.println("Qual é o seu peso? ");
 		double peso = sc.nextDouble();
-
 		System.out.println("Qual sua altura? " + vermelho + "(em metros) " + reset);
 		double altura = sc.nextDouble();
-
-		System.out.println("Você mede " + azul + altura + reset + "metros");
-		System.out.println("você tem " + azul + idade + reset + " anos e pesa " + azul + peso + reset + " Kg.");
 
 		// PERGUNTAS SOBRE HORA TRABALHADA E CALCULO DE HORAS
 		System.out.println("Quando você começa a trabalhar" + vermelho + "(HH.mm)? " + reset);
@@ -44,16 +37,9 @@ public class Program1 {
 
 		System.out.println("Quando vc sai do trabalho" + vermelho + "(HH.mm)? " + reset);
 		double fimTrabalho = sc.nextDouble();
-
-		double horarioTrabalho;
-
-		if (fimTrabalho >= inicioTrabalho) {
-			horarioTrabalho = fimTrabalho - inicioTrabalho;
-		} else {
-			horarioTrabalho = (24 - inicioTrabalho) + fimTrabalho;
-		}
-		System.out.println("Você trabalha " + azul + horarioTrabalho + reset + " horas.");
-
+		
+		Pessoa pessoa = new Pessoa (nome, funcaoCasa, idade, peso, altura, inicioTrabalho, fimTrabalho);
+		
 		// VALIDAÇÃO DA RESPOSTA DO IMC
 		String resposta;
 
@@ -106,17 +92,17 @@ public class Program1 {
 
 		// ======== RESUMO =========
 		System.out.println("\nVou fazer um resumo para você");
-		System.out.println("\nSeu nome é: " + azul + nome + reset + ".");
-		System.out.println("Você é o(a): " + azul + funcaoCasa + reset + ".");
-		System.out.println("Você tem: " + azul + idade + reset + " anos. ");
-		System.out.println("Você pesa: " + azul + peso + reset + " Kgs. ");
-		System.out.println("Você mede: " + azul + altura + reset + " metros. ");
-		System.out.println("Você trabalha: " + azul + horarioTrabalho + reset + " horas. ");
+		System.out.println("\nSeu nome é: " + azul + pessoa.getNome() + reset + ".");
+		System.out.println("Você é o(a): " + azul + pessoa.getFuncaoCasa() + reset + ".");
+		System.out.println("Você tem: " + azul + pessoa.getIdade() + reset + " anos. ");
+		System.out.println("Você pesa: " + azul + pessoa.getPeso() + reset + " Kgs. ");
+		System.out.println("Você mede: " + azul + pessoa.getAltura() + reset + " metros. ");
+		System.out.println("Você trabalha: " + azul + pessoa.horasTrabalhadas() + reset + " horas. ");
 
 		// MENSAGEM BASEADA NAS HORAS TRABALHADAS
-		if (horarioTrabalho == 8) {
+		if (pessoa.horasTrabalhadas() == 8) {
 			System.out.println(azul + "Você trabalha o recomendado, excelente" + reset);
-		} else if (horarioTrabalho < 8) {
+		} else if (pessoa.horasTrabalhadas() < 8) {
 			System.out.println(azul + "Pode aumentar a carga se quiser mais renda" + reset);
 		} else {
 			System.out.println(azul + "Cuidado para não esquecer o descanso" + reset);

@@ -10,10 +10,6 @@ public class Pessoa {
 	private double inicioTrabalho;
 	private double fimTrabalho;
 	
-	public Pessoa() {
-		
-	}
-	
 	public Pessoa(String nome, String funcaoCasa, int idade, double peso, double altura, double inicioTrabalho,
 			double fimTrabalho) {
 		this.nome = nome;
@@ -89,6 +85,4 @@ public class Pessoa {
 			return (24 - inicioTrabalho) + fimTrabalho;
 		}
 	}
-		
-	
 }
